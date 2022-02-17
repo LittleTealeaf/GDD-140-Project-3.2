@@ -27,11 +27,18 @@ function drawSliders() {
   fill("#0000FF");
   rect(b/255*width - sliderWidth / 2,sliderHeight*2,sliderWidth,sliderHeight);
 
+  strokeWeight(4);
+  stroke(0,255);
+    
+  for(var i = 0; i < 4; i++) {
+    line(0,sliderHeight * i,width,sliderHeight * i);
+  }
+
 }
 
 function mouseDragged() {
   if(mouseY > sliderHeight * 3 && selectMode == -1) {
-    fill(r,g,b);
+    fill(r,g,b,75);
     ellipse(mouseX,mouseY,paintWidth);
   } else if(selectMode == 0) {
     r = mouseX / width * 255;
