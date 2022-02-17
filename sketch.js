@@ -33,11 +33,12 @@ function drawSliders() {
   for(var i = 0; i < 4; i++) {
     line(0,sliderHeight * i,width,sliderHeight * i);
   }
-
+  
 }
 
 function mouseDragged() {
   if(mouseY > sliderHeight * 3 && selectMode == -1) {
+    noStroke();
     fill(r,g,b,75);
     ellipse(mouseX,mouseY,paintWidth);
   } else if(selectMode == 0) {
