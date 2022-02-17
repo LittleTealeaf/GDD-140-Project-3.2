@@ -4,6 +4,7 @@ var r = 255/2, g = 255/2, b = 255/2;
 var sliderHeight = 30;
 var sliderWidth = 10;
 var paintWidth = 30;
+var selectMode = -1;
 
 function setup() {
   createCanvas(windowWidth - 20,windowHeight - 20);
@@ -29,25 +30,29 @@ function drawSliders() {
 }
 
 function mouseDragged() {
-  if(!onMouseInteract()) {
+  if(mouseY > sliderHeight * 3 && selectMode == -1) {
     fill(r,g,b);
     ellipse(mouseX,mouseY,paintWidth);
-  }
-}
-
-function mouseClicked() {
-  onMouseInteract();
-}
-
-function onMouseInteract() {
-  if(mouseY < sliderHeight) {
+  } else if(selectMode == 0) {
     r = mouseX / width * 255;
-  } else if(mouseY < sliderHeight * 2) {
+  } else if(selectMode == 1) {
     g = mouseX / width * 255;
-  } else if(mouseY < sliderHeight * 3) {
+  } else if(selectMode == 2) {
     b = mouseX / width * 255;
-  } else {
-    return false;
   }
-  return true;
+}
+
+function mousePressed() {
+  if(mouseY < sliderHeight) {
+    selectMode = 0;
+  } else if(mouseY < sliderHeight * 2) {
+    selectMode = 1;
+  } else if(mouseY < sliderHeight * 3) {
+    selectMode = 2;
+  }
+  mouseDragged();
+}
+
+function mouseReleased() {
+  selectMode = -1;
 }
