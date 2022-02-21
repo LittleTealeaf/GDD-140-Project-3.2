@@ -3,7 +3,7 @@
 var r = 255/2, g = 255/2, b = 255/2;
 var sliderHeight = 30;
 var sliderWidth = 10;
-var paintWidth = 30;
+var paintWidth = 40;
 var selectMode = -1;
 
 function setup() {
@@ -39,7 +39,7 @@ function drawSliders() {
 function mouseDragged() {
   if(mouseY > sliderHeight * 3 && selectMode == -1) {
     noStroke();
-    fill(r,g,b,75);
+    fill(r,g,b,100);
     ellipse(mouseX,mouseY,paintWidth);
   } else if(selectMode == 0) {
     r = mouseX / width * 255;
