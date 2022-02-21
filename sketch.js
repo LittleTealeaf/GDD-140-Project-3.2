@@ -39,8 +39,9 @@ function drawSliders() {
 function mouseDragged() {
   if(mouseY > sliderHeight * 3 && selectMode == -1) {
     noStroke();
-    fill(r,g,b,100);
-    ellipse(mouseX,mouseY,paintWidth);
+    stroke(r,g,b,255);
+    strokeWeight(paintWidth);
+    line(mouseX, mouseY, pmouseX, pmouseY);
   } else if(selectMode == 0) {
     r = mouseX / width * 255;
   } else if(selectMode == 1) {
